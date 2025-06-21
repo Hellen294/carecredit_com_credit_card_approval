@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CareCredit Login</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', sans-serif; background-color: #f0f4f5; }
+
+    header {
+      border-bottom: 1px solid #ddd;
+      background: #fff;
+    }
+    .top-bar {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      padding: 10px 40px;
+      font-size: 14px;
+      border-bottom: 1px solid #ddd;
+    }
+    .top-bar a {
+      margin-left: 30px;
+      text-decoration: none;
+      color: #003e38;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .main-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 40px;
+      border-bottom: 1px solid #ddd;
+    }
+    .logo img {
+      height: 45px;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      margin-left: 50px;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: #222;
+      font-weight: 500;
+      position: relative;
+    }
+    .nav-links a.active {
+      font-weight: 700;
+    }
+    .nav-links a.active::after {
+      content: "";
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background-color: #007b65;
+      border-radius: 2px;
+    }
+    .apply-btn {
+      background-color: #007b65;
+      color: white;
+      padding: 8px 20px;
+      border-radius: 6px;
+      font-weight: 700;
+      text-decoration: none;
+      margin-right: 30px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .right-links {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+    }
+    .divider {
+      height: 32px;
+      width: 1px;
+      background-color: #ccc;
+    }
+    .mobile-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+    }
+    .mobile-toggle span {
+      height: 3px;
+      width: 24px;
+      background: #333;
+    }
+    .mobile-menu {
+      display: none;
+      flex-direction: column;
+      padding: 15px 20px;
+      background-color: #f9f9f9;
+      border-top: 1px solid #ddd;
+    }
+    .mobile-menu a {
+      margin: 10px 0;
+      font-weight: 500;
+      color: #004d40;
+      text-decoration: none;
+    }
+    @media (max-width: 768px) {
+      .nav-links, .right-links .apply-btn, .right-links .divider, .right-links a:last-child {
+        display: none;
+      }
+      .mobile-toggle {
+        display: flex;
+      }
+      .mobile-menu.open {
+        display: flex;
+      }
+    }
+
+    .login-container {
+      max-width: 400px;
+      margin: 60px auto;
+      background: #fff;
+      padding: 40px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      border-radius: 12px;
+    }
+    .login-container h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #007b65;
+    }
+    .form-group { margin-bottom: 20px; }
+    .form-group label { display: block; margin-bottom: 6px; color: #333; font-weight: 500; }
+    .form-group input {
+      width: 100%; padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 15px;
+    }
+    .login-btn {
+      width: 100%;
+      padding: 12px;
+      background: linear-gradient(135deg, #007b65, #009688);
+      border: none;
+      color: #fff;
+      font-size: 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+    .login-btn:hover {
+      transform: scale(1.02);
+    }
+    .confirmation {
+      display: none;
+      max-width: 600px;
+      margin: 40px auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+    .confirmation h3 { color: #007b65; margin-bottom: 20px; }
+    .confirmation p { margin: 10px 0; line-height: 1.6; }
+    .check-card-btn {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 14px 26px;
+      background: linear-gradient(135deg, #ff9800, #f57c00);
+      color: white;
+      border: none;
+      font-size: 16px;
+      border-radius: 50px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+      text-decoration: none;
+      font-weight: bold;
+      transition: transform 0.3s ease;
+    }
+    .check-card-btn:hover {
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="top-bar">
+      <a href="#"><img src="https://img.icons8.com/material-outlined/20/004d40/search--v1.png"/> Search</a>
+      <a href="#"><img src="https://img.icons8.com/material-outlined/20/004d40/phone.png"/> Contact Us</a>
+      <a href="#"><img src="https://img.icons8.com/material-outlined/20/004d40/user.png"/> Log In</a>
+    </div>
+    <div class="main-nav">
+      <div class="logo">
+        <img src="main_logo.png" alt="CareCredit Logo">
+      </div>
+      <div class="nav-links">
+        <a href="#" class="active">For Consumers</a>
+        <a href="#">How It Works</a>
+        <a href="#">Categories</a>
+        <a href="#">Find a Location</a>
+        <a href="#">Resources</a>
+      </div>
+      <div class="right-links">
+        <a href="#" class="apply-btn">Apply</a>
+        <div class="divider"></div>
+        <a href="#"><strong>For Providers</strong></a>
+        <div class="mobile-toggle" onclick="toggleMobileMenu()">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="#">For Consumers</a>
+      <a href="#">How It Works</a>
+      <a href="#">Categories</a>
+      <a href="#">Find a Location</a>
+      <a href="#">Resources</a>
+      <a href="#">Apply</a>
+      <a href="#"><strong>For Providers</strong></a>
+    </div>
+  </header>
+
+  <div class="login-container">
+    <h2>CareCredit Login</h2>
+    <div class="form-group">
+      <label for="username">Username</label>
+      <input type="text" id="username" placeholder="Enter your username">
+    </div>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" id="password" placeholder="Enter your password">
+    </div>
+    <button class="login-btn" onclick="loginUser()">Log In</button>
+  </div>
+
+  <div class="confirmation" id="confirmation">
+    <h3>Account Confirmation</h3>
+    <p><strong>Applicant Name:</strong> Janice Lynn Riggs</p>
+    <p><strong>Date of Birth:</strong> April 15, 1965</p>
+    <p><strong>Email:</strong> Janicelriggs@gmail.com</p>
+    <p><strong>Address:</strong> 635 Ridgecrest Drive, Roanoke, VA 24019</p>
+    <p><strong>CPN:</strong> 540.944.8703</p>
+    <a class="check-card-btn" href="care_credit_card_approval_page.html">Check Your Card</a>
+  </div>
+
+  <script>
+    function toggleMobileMenu() {
+      document.getElementById('mobileMenu').classList.toggle('open');
+    }
+
+    function loginUser() {
+      const username = document.getElementById('username').value.trim();
+      const password = document.getElementById('password').value.trim();
+      if (username === 'Jonah234' && password === '123123') {
+        document.querySelector('.login-container').style.display = 'none';
+        document.getElementById('confirmation').style.display = 'block';
+      } else {
+        const errorPopup = document.createElement('div');
+        errorPopup.style.position = 'fixed';
+        errorPopup.style.top = '20px';
+        errorPopup.style.left = '50%';
+        errorPopup.style.transform = 'translateX(-50%)';
+        errorPopup.style.background = '#ff5252';
+        errorPopup.style.color = 'white';
+        errorPopup.style.padding = '12px 24px';
+        errorPopup.style.borderRadius = '8px';
+        errorPopup.style.boxShadow = '0 2px 8px rgba(0,0,0,0.2)';
+        errorPopup.style.zIndex = '1000';
+        errorPopup.textContent = 'Incorrect credentials. Please try again.';
+        document.body.appendChild(errorPopup);
+        setTimeout(() => document.body.removeChild(errorPopup), 3000);
+      }
+    }
+  </script>
+</body>
+</html>
