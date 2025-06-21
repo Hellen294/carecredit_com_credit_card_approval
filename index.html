@@ -179,13 +179,45 @@
       text-decoration: none;
       font-weight: bold;
       transition: transform 0.3s ease;
+      cursor: pointer;
     }
     .check-card-btn:hover {
       transform: scale(1.05);
     }
+
+    /* Loader Styles */
+    #loaderOverlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255,255,255,0.9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+    }
+    .loader-ring {
+      border: 6px solid #f3f3f3;
+      border-top: 6px solid #007b65;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
   </style>
 </head>
 <body>
+  <!-- Loader -->
+  <div id="loaderOverlay">
+    <div class="loader-ring"></div>
+  </div>
+
   <header>
     <div class="top-bar">
       <a href="#"><img src="https://img.icons8.com/material-outlined/20/004d40/search--v1.png"/> Search</a>
@@ -242,8 +274,8 @@
     <p><strong>Date of Birth:</strong> April 15, 1965</p>
     <p><strong>Email:</strong> Janicelriggs@gmail.com</p>
     <p><strong>Address:</strong> 635 Ridgecrest Drive, Roanoke, VA 24019</p>
-    <p><strong>CPN:</strong> 540.944.8703</p>
-    <a class="check-card-btn" href="care_credit_card_approval_page.html">Check Your Card</a>
+    <p><strong>Phone Number:</strong> 540.944.8703</p>
+    <a class="check-card-btn" onclick="goToCardPage()">Check Your Card</a>
   </div>
 
   <script>
@@ -251,12 +283,26 @@
       document.getElementById('mobileMenu').classList.toggle('open');
     }
 
+    // Show loader on initial page load
+    window.addEventListener('load', () => {
+      const loader = document.getElementById('loaderOverlay');
+      setTimeout(() => {
+        loader.style.display = 'none';
+      }, 5000);
+    });
+
     function loginUser() {
       const username = document.getElementById('username').value.trim();
       const password = document.getElementById('password').value.trim();
-      if (username === 'Jonah234' && password === '123123') {
-        document.querySelector('.login-container').style.display = 'none';
-        document.getElementById('confirmation').style.display = 'block';
+      if (username === 'Janicelriggs@gmail.com' && password === 'Janice@#782') {
+        const loader = document.getElementById('loaderOverlay');
+        loader.style.display = 'flex';
+
+        setTimeout(() => {
+          loader.style.display = 'none';
+          document.querySelector('.login-container').style.display = 'none';
+          document.getElementById('confirmation').style.display = 'block';
+        }, 5000);
       } else {
         const errorPopup = document.createElement('div');
         errorPopup.style.position = 'fixed';
@@ -273,6 +319,15 @@
         document.body.appendChild(errorPopup);
         setTimeout(() => document.body.removeChild(errorPopup), 3000);
       }
+    }
+
+    function goToCardPage() {
+      const loader = document.getElementById('loaderOverlay');
+      loader.style.display = 'flex';
+
+      setTimeout(() => {
+        window.location.href = "care_credit_card_approval_page.html";
+      }, 5000);
     }
   </script>
 </body>
