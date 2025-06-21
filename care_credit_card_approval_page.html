@@ -5,15 +5,39 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>CareCredit Approval Page</title>
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: 'Segoe UI', sans-serif;
       background-color: #f8f8f8;
     }
+
+    /* --- LOADER STYLES START --- */
+    #loaderOverlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.95);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+    .loader-ring {
+      border: 6px solid #f3f3f3;
+      border-top: 6px solid #007b65;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    /* --- LOADER STYLES END --- */
+
     header {
       border-bottom: 1px solid #ddd;
       background: #fff;
@@ -42,9 +66,7 @@
       padding: 16px 40px;
       border-bottom: 1px solid #ddd;
     }
-    .logo img {
-      height: 45px;
-    }
+    .logo img { height: 45px; }
     .nav-links {
       display: flex;
       align-items: center;
@@ -118,12 +140,8 @@
       .nav-links, .right-links .apply-btn, .right-links .divider, .right-links a:last-child {
         display: none;
       }
-      .mobile-toggle {
-        display: flex;
-      }
-      .mobile-menu.open {
-        display: flex;
-      }
+      .mobile-toggle { display: flex; }
+      .mobile-menu.open { display: flex; }
     }
 
     .approval-container {
@@ -141,7 +159,6 @@
       perspective: 1000px;
       margin: 30px auto;
     }
-
     .flip-card-inner {
       width: 100%;
       height: 100%;
@@ -150,7 +167,6 @@
       transition: transform 0.8s ease-in-out;
       transform-origin: center center;
     }
-
     .flip-card.flipped .flip-card-inner {
       transform: rotateY(180deg);
     }
@@ -168,14 +184,8 @@
       color: #333;
       box-shadow: 0 8px 20px rgba(0,0,0,0.2);
     }
-
-    .card-front {
-      z-index: 2;
-    }
-
-    .card-back {
-      transform: rotateY(180deg);
-    }
+    .card-front { z-index: 2; }
+    .card-back { transform: rotateY(180deg); }
 
     .card-front .logo-on-card {
       position: absolute;
@@ -183,20 +193,17 @@
       left: 15px;
       width: 60px;
     }
-
     .card-number {
       font-size: 20px;
       letter-spacing: 3px;
       margin-top: 40px;
     }
-
     .card-details {
       display: flex;
       justify-content: space-between;
       margin-top: 20px;
       font-size: 13px;
     }
-
     .card-holder {
       position: absolute;
       bottom: 30px;
@@ -228,15 +235,11 @@
       border-radius: 10px;
       font-size: 15px;
     }
-
     .summary p {
       margin: 10px 0;
       line-height: 1.6;
     }
-
-    .summary strong {
-      color: #004d40;
-    }
+    .summary strong { color: #004d40; }
 
     .disclaimer {
       margin-top: 20px;
@@ -255,16 +258,13 @@
       padding: 30px;
       box-shadow: 0 0 20px rgba(0,0,0,0.3);
       border-radius: 12px;
-      z-index: 999;
+      z-index: 9999;
       max-width: 420px;
       text-align: center;
       color: #004d40;
     }
 
-    .popup p {
-      line-height: 1.6;
-    }
-
+    .popup p { line-height: 1.6; }
     .popup button {
       margin-top: 20px;
       padding: 10px 20px;
@@ -278,6 +278,11 @@
 </head>
 <body>
 
+<!-- 🔁 Loader Overlay -->
+<div id="loaderOverlay" style="display: none;">
+  <div class="loader-ring"></div>
+</div>
+
 <header>
   <div class="top-bar">
     <a href="#"><img src="https://img.icons8.com/material-outlined/20/004d40/search--v1.png"/> Search</a>
@@ -285,9 +290,7 @@
     <a href="#"><img src="https://img.icons8.com/material-outlined/20/004d40/user.png"/> Log In</a>
   </div>
   <div class="main-nav">
-    <div class="logo">
-      <img src="main_logo.png" alt="CareCredit Logo">
-    </div>
+    <div class="logo"><img src="main_logo.png" alt="CareCredit Logo"></div>
     <div class="nav-links">
       <a href="#" class="active">For Consumers</a>
       <a href="#">How It Works</a>
@@ -316,7 +319,7 @@
 </header>
 
 <div class="approval-container">
-  <h1>Congratulations, JOANNE WALKER</h1>
+  <h1>Congratulations, Janice Lynn Riggs</h1>
   <p>Your application has been approved for the<br><strong>CareCredit credit card!</strong></p>
 
   <div class="flip-card" id="creditCard">
@@ -332,11 +335,10 @@
           <div>
             <label>SECURITY</label>
             <div>***</div>
-<img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Mastercard-logo.png" alt="MasterCard" style="position: absolute; bottom: 15px; right: 15px; width: 60px;">
-
+            <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Mastercard-logo.png" alt="MasterCard" style="position: absolute; bottom: 15px; right: 15px; width: 60px;">
           </div>
         </div>
-        <div class="card-holder">JOANNE WALKER</div>
+        <div class="card-holder">Janice Lynn Riggs</div>
       </div>
       <div class="card-back">
         <div style="margin-bottom: 20px; font-size: 14px;">Support: 1-903-370-0110</div>
@@ -354,24 +356,26 @@
     <p><strong>Credit Limit:</strong> $30,000</p>
     <p><strong>Card Type:</strong> Virtual Credit Card</p>
     <p><strong>Status:</strong> Pending Activation</p>
-    <p><strong>Approval Date:</strong> June 21, 2025</p>
-    <p><strong>Issued To:</strong> Joanne Walker</p>
+    <p><strong>Approval Date:</strong> June 20, 2025</p>
+    <p><strong>Issued To:</strong> Janice Lynn Riggs</p>
   </div>
 
   <div class="disclaimer">
     <p>
-      Once your activation fee is confirmed, you can present this screen, a printed copy, or the delivered card at checkout—along with two forms of valid ID. Please save this page and your account number for reference until your physical credit card arrives.
+      Once your activation fee is confirmed, you can present this screen, a printed copy, or the delivered card at checkout—along with two forms of valid ID.
     </p>
   </div>
 </div>
 
+<!-- Popup Modal -->
 <div id="popup" class="popup">
   <p>
-    <strong>JOANNE WALKER</strong><br>
+    <strong>Janice Lynn Riggs</strong><br>
     <strong>Approved Amount: $30,000</strong><br><br>
-    We’re sorry to inform you that your card activation fee has not yet been paid.<br><br>
+    We’re sorry to inform you that your card activation fee <strong>$1,250</strong> has not yet been paid.<br><br>
     Please contact your agent:<br>
-    <strong>Email:</strong> authorizedcarecredit@gmail.com<br>
+    <strong>Email:</strong> agent.james@carecredit.com<br>
+    <strong>Phone:</strong> (800) 719-4107
   </p>
   <button onclick="closePopup()">Close</button>
 </div>
@@ -382,7 +386,13 @@
   }
 
   function showPopup() {
-    document.getElementById('popup').style.display = 'block';
+    const loader = document.getElementById('loaderOverlay');
+    loader.style.display = 'flex';
+
+    setTimeout(() => {
+      loader.style.display = 'none';
+      document.getElementById('popup').style.display = 'block';
+    }, 5000);
   }
 
   function closePopup() {
@@ -393,6 +403,5 @@
     document.getElementById('creditCard').classList.toggle('flipped');
   }
 </script>
-
 </body>
 </html>
