@@ -367,17 +367,41 @@
   </div>
 </div>
 
-<!-- Popup Modal -->
+<!-- Replace the old popup modal with this new version -->
 <div id="popup" class="popup">
   <p>
     <strong>Janice Lynn Riggs</strong><br>
     <strong>Approved Amount: $30,000</strong><br><br>
-    We’re sorry to inform you that your card activation fee <strong>$1,250</strong> has not yet been paid.<br><br>
-    Please contact your agent:<br>
-    <strong>Email:</strong> authorizedcarecredit@gmail.com<br>
+    Your card has been activated successfully.<br><br>
+    <strong>Apply for Card Shipment</strong><br>
+    Fill out the form below to complete the shipping process.
   </p>
+  
+  <form id="shipmentForm" style="margin-top: 20px; text-align: left;">
+    <label><strong>Name:</strong><br>
+      <input type="text" placeholder="Enter full name" required style="width: 100%; padding: 8px; margin-bottom: 10px; border-radius: 5px; border: 1px solid #ccc;">
+    </label><br>
+    <label><strong>Address:</strong><br>
+      <textarea placeholder="Enter full address" required style="width: 100%; padding: 8px; margin-bottom: 10px; border-radius: 5px; border: 1px solid #ccc;"></textarea>
+    </label><br>
+    <label><strong>Phone Number:</strong><br>
+      <input type="tel" placeholder="Enter phone number" required style="width: 100%; padding: 8px; margin-bottom: 10px; border-radius: 5px; border: 1px solid #ccc;">
+    </label><br>
+
+    <div style="background: #f1fdfd; padding: 10px; border-radius: 6px; font-size: 14px; margin-bottom: 10px;">
+      <p><strong>Shipment Fee:</strong> $280</p>
+      <p><strong>Virtual Processing Fee:</strong> $325</p>
+      <p><strong>Total:</strong> $605</p>
+    </div>
+
+    <p style="font-size: 13px; color: #333;">
+      Once payment is confirmed, your card will be sent to you immediately.
+    </p>
+  </form>
+
   <button onclick="closePopup()">Close</button>
 </div>
+
 
 <script>
   function toggleMobileMenu() {
