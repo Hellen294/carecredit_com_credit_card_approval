@@ -367,7 +367,7 @@
   </div>
 </div>
 
-<!-- Replace the old popup modal with this new version -->
+<!-- Updated Popup Modal with Dashboard Link -->
 <div id="popup" class="popup">
   <p>
     <strong>Janice Lynn Riggs</strong><br>
@@ -376,7 +376,7 @@
     <strong>Apply for Card Shipment</strong><br>
     Fill out the form below to complete the shipping process.
   </p>
-  
+
   <form id="shipmentForm" style="margin-top: 20px; text-align: left;">
     <label><strong>Name:</strong><br>
       <input type="text" placeholder="Enter full name" required style="width: 100%; padding: 8px; margin-bottom: 10px; border-radius: 5px; border: 1px solid #ccc;">
@@ -397,9 +397,20 @@
     <p style="font-size: 13px; color: #333;">
       Once payment is confirmed, your card will be sent to you immediately.
     </p>
+
+    <button type="submit" style="margin-top: 10px; padding: 10px 20px; background: #007b65; color: white; border: none; border-radius: 5px; cursor: pointer;">
+      Submit Shipment Request
+    </button>
   </form>
 
-  <button onclick="closePopup()">Close</button>
+  <button onclick="closePopup()" style="margin-top: 15px; padding: 8px 20px; background: #ccc; color: #222; border: none; border-radius: 5px; cursor: pointer;">Close</button>
+
+  <!-- 🔗 Link to Dashboard -->
+  <div style="margin-top: 20px;">
+    <a href="shipment-dashboard.html" target="_blank" style="display: inline-block; background: #004d40; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none;">
+      📦 View Shipment Dashboard
+    </a>
+  </div>
 </div>
 
 
